@@ -12,7 +12,7 @@ function createPhotoArray() {
 
     const photoObj = { id, url, description, likes, comments };
     photoArray.push(photoObj);
-  }
+  };
 
   return photoArray;
 }
