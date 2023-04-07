@@ -1,4 +1,3 @@
-import { createPhotoArray } from './data.js';
+import { pictures } from './drawPhotos.js';
 
-const photos = createPhotoArray();
-console.log(photos);
+//Задание 7 часть 2
