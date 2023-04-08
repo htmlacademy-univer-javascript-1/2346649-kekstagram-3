@@ -1,6 +1,6 @@
 import { createPhotoArray } from './data.js';
 
-const photos = createPhotoArray
+const photos = createPhotoArray();
 const pictureTemplate = document.querySelector('#picture').content;
 const pictures = document.querySelector('.pictures');
 const fragment = new DocumentFragment();
