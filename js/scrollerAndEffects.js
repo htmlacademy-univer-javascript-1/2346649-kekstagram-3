@@ -41,7 +41,7 @@ scaleControlBigger.addEventListener('click', () => {
 });
 
 scaleControlValue.addEventListener('change', () => {
-  const scale = parseInt(scaleControlValue.value);
+  const scale = parseInt(+scaleControlValue.value);
   if (scale >= MIN_SCALE && scale <= MAX_SCALE) {
     updateScale(scale);
   } else {
@@ -59,7 +59,7 @@ effectsList.addEventListener('change', (evt) => {
 });
 
 
-noUiSlider.create(effectLevelSlider, {
+/*noUiSlider.create(effectLevelSlider, {
   range: {
     min: 0,
     max: 1,
@@ -67,4 +67,4 @@ noUiSlider.create(effectLevelSlider, {
   start: 1,
   step: 0.1,
   connect: 'lower',
-});
+}); */
