@@ -41,7 +41,7 @@ scaleControlBigger.addEventListener('click', () => {
 });
 
 scaleControlValue.addEventListener('change', () => {
-  const scale = parseInt(+scaleControlValue.value);
+  const scale = parseInt(scaleControlValue.value, 10);
   if (scale >= MIN_SCALE && scale <= MAX_SCALE) {
     updateScale(scale);
   } else {
