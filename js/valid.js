@@ -1,5 +1,3 @@
-import pristineMin from "../pristine/pristine.min";
-
 const form = document.querySelector('.img-upload__form');
 const regex = new RegExp('^#[а-яa-zA-ZА-ЯёЁ0-9]{1,19}$');
 
@@ -23,11 +21,17 @@ function validateHashTag (value) {
 pristine.addValidator(
   form.querySelector('.text__description'),
   validateComment,
-  'От 2 до 50 символов'
+  'Комментарий должен быть от 20 до 140 символов'
 );
 
 pristine.addValidator(
   form.querySelector('.text__hashtags'),
   validateHashTag,
-  'От 2 до 50 символов'
+  'Хэштег должен начинаться с # и быть не больше 20 символов'
 );
+
+form.addEventListener('submit', (evt) => {
+  if (!pristine.validate()) {
+    evt.preventDefault();
+  }
+});

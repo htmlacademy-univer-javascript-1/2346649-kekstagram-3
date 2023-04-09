@@ -1,6 +1,7 @@
 const uploadFileInput = document.querySelector('#upload-file');
 const editImageForm = document.querySelector('.img-upload__overlay');
 const closeButton = editImageForm.querySelector('#upload-cancel');
+const form = document.querySelector('.img-upload__form');
 
 function showEditImageForm() {
   editImageForm.classList.remove('hidden');
