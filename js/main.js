@@ -1,2 +1,2 @@
-
-//Задание 7 часть 2
+import './drawPhotos.js';
+import './valid.js';

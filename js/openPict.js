@@ -1,5 +1,4 @@
 import {clearSlider} from './previewAndEffects.js';
-//import {fetchData} from './server.js';
 
 const imgUpload = document.querySelector('.img-upload__overlay');
 const fileInput = document.querySelector('.img-upload__input');
@@ -33,14 +32,5 @@ function openImgUpload(){
 
 fileInput.addEventListener('change', openImgUpload);
 closeImgUploadButton.addEventListener('click', closeImgUpload);
-
-
-// export const unblockSubmitButton = function (evt) {
-//   evt.target.querySelector('.img-upload__submit').disabled = false;
-// };
-
-// export const blockSubmitButton = function (evt) {
-//   evt.target.querySelector('.img-upload__submit').disabled = true;
-// };
 
 export {closeImgUpload};

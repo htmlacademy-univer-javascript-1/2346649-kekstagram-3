@@ -1,5 +1,4 @@
 import { closeImgUpload } from './openPict.js';
-//import {blockSubmitButton, unblockSubmitButton} from './openPict.js';
 import {sendData} from './server.js';
 
 const form = document.querySelector('.img-upload__form');
