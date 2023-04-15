@@ -1,25 +1,4 @@
-import { getRandomInt } from './util.js';
-
-function createPhotoArray() {
-  const photoArray = [];
-
-  for (let i = 1; i <= 25; i++) {
-    const id = i;
-    const url = `photos/${i}.jpg`;
-    const description = `Описание фотографии №${i}`;
-    const likes = getRandomInt(15, 200);
-    const comments = getRandomInt(0, 200);
-
-    const photoObj = { id, url, description, likes, comments };
-    photoArray.push(photoObj);
-  }
-
-  return photoArray;
-}
-
-export { createPhotoArray };
-
-const EFFECTS = {
+export const EFFECTS = {
   none: {
     name: 'none',
     filter: '',
@@ -31,6 +10,7 @@ const EFFECTS = {
     filter: 'grayscale',
     min: 0,
     max: 1,
+    start: 1,
     size: ''
   },
   sepia: {
@@ -39,6 +19,7 @@ const EFFECTS = {
     filter: 'sepia',
     min: 0,
     max: 1,
+    start: 1,
     size: ''
   },
   marvin: {
@@ -47,6 +28,7 @@ const EFFECTS = {
     filter: 'invert',
     min: 0,
     max: 100,
+    start: 100,
     size: '%'
   },
   phobos: {
@@ -55,6 +37,7 @@ const EFFECTS = {
     filter: 'blur',
     min: 0,
     max: 3,
+    start: 3,
     size: 'px'
   },
   heat: {
@@ -63,8 +46,7 @@ const EFFECTS = {
     filter: 'brightness',
     min: 1,
     max: 3,
+    start: 3,
     size: ''
   }
 };
-
-export { EFFECTS };

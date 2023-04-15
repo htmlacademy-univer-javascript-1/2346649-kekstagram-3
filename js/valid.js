@@ -1,10 +1,22 @@
+import { closeImgUpload } from './openPict.js';
+import {sendData} from './server.js';
+
 const form = document.querySelector('.img-upload__form');
 const regex = new RegExp('^#[а-яa-zA-ZА-ЯёЁ0-9]{1,19}$');
 
-const pristine  = new Pristine(form, {
+const pristineComment  = new Pristine (form, {
   classTo: 'img-upload__text',
-  errorClass: 'form__item--invalid',
-  successClass: 'form__item--valid',
+  errorClass: 'form--invalid',
+  successClass: 'form--valid',
+  errorTextParent: 'img-upload__text',
+  errorTextTag: 'span',
+  errorTextClass: 'form__error'
+});
+
+const pristineHashTag  = new Pristine (form, {
+  classTo: 'img-upload__text',
+  errorClass: 'form--invalid',
+  successClass: 'form--valid',
   errorTextParent: 'img-upload__text',
   errorTextTag: 'span',
   errorTextClass: 'form__error'
@@ -15,23 +27,32 @@ function validateComment (value) {
 }
 
 function validateHashTag (value) {
-  return value.length <= 20 || regex.test(value);
+  return regex.test(value) && value.length >= 2;
 }
 
-pristine.addValidator(
+pristineComment.addValidator(
   form.querySelector('.text__description'),
   validateComment,
   'Комментарий должен быть от 20 до 140 символов'
 );
 
-pristine.addValidator(
+pristineHashTag.addValidator(
   form.querySelector('.text__hashtags'),
   validateHashTag,
-  'Хэштег должен начинаться с # и быть не больше 20 символов'
+  'Хэштег должен начинаться с # и быть от 1 до 19 символов'
 );
 
 form.addEventListener('submit', (evt) => {
-  if (!pristine.validate()) {
-    evt.preventDefault();
+  evt.preventDefault();
+  if(pristineHashTag.validate() && pristineComment.validate()) {
+    //blockSubmitButton(evt)
+    evt.target.querySelector('.img-upload__submit').disabled = true;
+    sendData( () => {
+      //unblockSubmitButton
+      evt.target.querySelector('.img-upload__submit').disabled = false;
+    },
+    new FormData(evt.target)
+    );
+    closeImgUpload();
   }
 });
